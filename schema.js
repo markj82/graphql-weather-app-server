@@ -11,7 +11,17 @@ const WeatherType = new GraphQLObjectType({
         id: { type: GraphQLInt },
         name: { type: GraphQLString },
         main: { type: MainType },
-        clouds: { type: CloudType }
+        clouds: { type: CloudType },
+        weather: { type: new GraphQLList(DetailsWeatherType) }
+    })
+})
+
+// DetailsWeatherType
+const DetailsWeatherType = new GraphQLObjectType({
+    name: 'DetailsWeatherType',
+    fields: () => ({
+        description: { type: GraphQLString },
+        icon: { type: GraphQLString }
     })
 })
 
